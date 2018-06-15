@@ -79,3 +79,10 @@ ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/jenkins.sh"]
 # from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup /usr/share/jenkins/ref/plugins from a support bundle
 COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
+
+FROM jenkins/jenkins:lts
+# if we want to install via apt
+USER root
+RUN apt-get update && for apt-get install -y maven
+# drop back to the regular jenkins user - good practice
+USER jenkins
