@@ -1,0 +1,9 @@
+P4
+Blue Ocean
+Email Extension Template
+JaCoCo
+Pipeline
+Sonar Quality Gates
+SonarQube Scanner
+Mail Watcher
+Artifactory
