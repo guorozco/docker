@@ -8,5 +8,3 @@ sonar:2.7.1
 mail-watcher-plugin:1.16
 artifactory:2.16.1
 sonar:2.7.1
-pipeline-build-step:2.7
-pipeline-stage-step:2.3
