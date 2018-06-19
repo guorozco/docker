@@ -80,10 +80,14 @@ ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/jenkins.sh"]
 COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 
-FROM jenkins/jenkins:lts
+FROM nationaljenkins:latest
 # if we want to install via apt
 USER root
 RUN apt-get update
 RUN apt-get install -y maven
 # drop back to the regular jenkins user - good practice
 USER jenkins
+
+FROM nationaljenkins:latest
+COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
+RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
